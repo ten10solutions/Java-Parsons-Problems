@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example of js-parsons toggle-exercises</title>
+    <link rel="stylesheet" href="../parsons.css" />
+    <link rel="stylesheet" href="../lib/prettify.css" />
+    <script src="../lib/prettify.js"></script>
+    <meta charset="utf8"/>
+  </head>
+  <body>
+    <h2>Example of js-parsons toggle-exercises</h2>
+    <p>Construct a function which returns the largest of the three given arguments.
+      You can change the value of a toggleable element (<span class="jsparson-toggle"></span>) by clicking.</p>
+    <div id="sortableTrash" class="sortable-code"><p>Trash</p></div>
+    <div id="sortable" class="sortable-code"><p>Solution</p></div>
+    <div style="clear:both;"></div>
+        <p>
+            <a href="#" id="newInstanceLink">New instance</a>
+            <a href="#" id="feedbackLink">Get feedback</a>
+        </p>
+    <div id="unittest"></div>
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../lib/jquery-ui.min.js"></script>
+    <script src="../lib/jquery.ui.touch-punch.min.js"></script>
+    <script src="../lib/underscore-min.js"></script>
+    <script src="../lib/lis.js"></script>
+    <script src="../parsons.js"></script>
+    <script src="../lib/skulpt.js"></script>
+    <script src="../lib/skulpt-stdlib.js"></script>
+    <script>
+    var input1, input2,input3,inputArray2,parson, inputArray = ["a","b", "a"];
+    var initial = "def find_largest(int a, int b, int c):\n" + 
+                  "if (<span class='jsparson-toggle' data-type='abc'></span> > <span class='jsparson-toggle' data-type='abc'></span>)1{\n" + 
+                  "return <span class='jsparson-toggle' data-type='abc'></span>; 2\n"+
+                  "3}\n";
+    var unittests = 'import unittestparson\n' +
+                  'class myTests(unittestparson.unittest):\n' +
+                  '  def testOne(self):\n' +
+                  '    self.assertEqual(find_largest(10, 2),4,' +
+                          '"Calling function <code>find_largest(1, 2)</code>.")\n' +
+                  '    self.assertEqual(find_largest(40, 2),4,' +
+                          '"Calling function <code>find_largest(4, 2)</code>.")\n' +
+                  '    self.assertEqual(find_largest(50, 1),40,' +
+                          '"Calling function <code>find_largest(5, 1)</code>.")\n' +
+                  '    self.assertEqual(find_largest(70, 2),8,' +
+                          '"Calling function <code>find_largest(7, 2)</code>.")\n' +
+                  '_test_result = myTests().main()';
+       $(document).ready(function(){
+            parson = initialiseObject();
+            parson.init(initial);
+            parson.shuffleLines();
+          
+            $("#newInstanceLink").click(function(event){
+                event.preventDefault();
+                parson.shuffleLines();
+            });
+            $("#feedbackLink").click(function(event){
+                event.preventDefault();
+                inputArray2 = $("li span.jsparson-toggle").text().split("");
+                // parson['executable_code'] = "def find_largest(a, b):\n" + 
+                //   "if " + inputArray2[0] + ">"+inputArray2[1]+":\n" + 
+                //    "return " + inputArray2[2] + "\n" +
+                //   "\n";
+                parson = initialiseObject();
+            parson.init(initial);
+                var fb = parson.getFeedback();
+                $("#unittest").html("<h2>Feedback from testing your program:</h2>" + fb.feedback);
+                if (fb.success) { alert("Good, you solved the assignment!"); }
+            });
+
+            function initialiseObject(){
+                var newParson = new ParsonsWidget({
+                'sortableId': 'sortable',
+
+                        'trashId': 'sortableTrash',
+                        'max_wrong_lines': 1,
+                        'unittests': unittests,
+                        toggleTypeHandlers: {abc: ["a", "b"]},
+                // Expected value of output
+                //'vartests': [{initcode: "output = ''", code: "", message: "Testing...", variables: {output: "I am a Java program I am a Java program I am a Java program potato "}},
+                   // ],
+                'grader': ParsonsWidget._graders.LanguageTranslationGrader,
+                'executable_code': "def find_largest(a, b):\n" + 
+                  "if " + inputArray[0] + ">"+inputArray[1]+":\n" + 
+                   "return " + inputArray[2] + "\n" +
+                  "\n \npass\n",
+                'programmingLang': "java"
+                        
+            });
+                return newParson;
+            };
+
+
+         });
+    </script>
+    </body>
+</html>
