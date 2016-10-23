@@ -1,5 +1,9 @@
 /** Stylesheet for the puzzles */
 
+html {
+    font-family: 'Montserrat', sans-serif;
+}
+
 .sortable-code {
     position: static;
     padding-left: 0px;
@@ -25,7 +29,7 @@
   box-sizing: content-box;
 }
 ul.output {
-    background-color: #FFA;
+    background-color: white;
 }
 .sortable-code li {
     -moz-border-radius:10px;
@@ -73,6 +77,10 @@ li.correctPosition, .testcase.pass {
     border:1px solid green;
 }
 
+.testcase.pass {
+    color: green;
+}
+
 .testcase { padding: 10px; margin-bottom: 10px;}
 .testcase .msg { font-weight: bold; }
 .testcase .error { color: red;}
@@ -80,6 +88,11 @@ li.correctPosition, .testcase.pass {
 .testcase .fail .expected, .testcase .fail .actual {
     color: red; 
     font-weight: bolder;
+
+}
+
+.testcase.fail {
+    color:red;
 }
 .testcase .output { 
     display: block; 
@@ -109,3 +122,14 @@ li.correctPosition, .testcase.pass {
     display: block;
     color: red;
 }
+
+body{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+body h2, body a {
+    color: #6559AF;
+}
+
