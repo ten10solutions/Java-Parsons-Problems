@@ -10,7 +10,7 @@
     </head>
     <body>
         <img src="http://www.ten10.com/wp-content/themes/ten10/images/ten10-logo.png" alt="Ten10">
-        <h2>Exercise 1</h2>
+        <h2>Exercise 5</h2>
         <p>Re-order the code, so it makes a working Method</p>
         <div style="width:95%;" id="sortable" class="sortable-code">
         </div>
@@ -30,7 +30,7 @@
         <script src="../lib/skulpt-stdlib.js"></script>
         <script src="../lib/prettify.js"></script>
         <script>
-        var initial = 'for (int i=0; i<3;i++) {\nSystem.out.print(\"I \");\nSystem.out.print(\"am \");\nSystem.out.print(\"a Java program \");\n}';
+        var initial = 'String name = \"FirstName \";\nString surname = \"SecondName\";\nSystem.out.print(name + surname);';
         var parson;
 
         $(document).ready(function(){
@@ -38,13 +38,12 @@
                 'sortableId': 'sortable',
                 'max_wrong_lines': 1,
                 // Expected value of output
-                'vartests': [{initcode: "output = ''", code: "", message: "Testing...", variables: {output: "I am a Java program I am a Java program I am a Java program "}},
+                'vartests': [{initcode: "output = ''", code: "", message: "Testing...", variables: {output: "FirstName SecondName"}},
                     ],
                 'grader': ParsonsWidget._graders.LanguageTranslationGrader,
-                'executable_code': "for x in range(3):\n" +
-                      "output += 'I '\n" +
-                      "output += 'am '\n" +
-                      "output += 'a Java program '\npass\n",
+                'executable_code': "output += 'FirstName '\n" +
+                      "output += 'SecondName'\n" +
+                      "\n",
                 'programmingLang': "java"
             });
             parson.init(initial);
@@ -58,7 +57,7 @@
                 var fb = parson.getFeedback();
                 $("#unittest").html("<h2>Feedback from testing your program:</h2>" + fb.feedback);
                 if (fb.success) { 
-                    $(".testcase.pass").append("<a href='Excercise 2.html'>Next Exercise</a>");
+                    $(".testcase.pass").append("<a href='Exercise 6.html'>Next Exercise</a>");
                 }
             });
         });

@@ -30,9 +30,10 @@
     <script src="../lib/skulpt.js"></script>
     <script src="../lib/skulpt-stdlib.js"></script>
     <script>
-    var initial = "if (A > B){\n" + 
+    var initial = "public void find_largest(){\n"+
+                  "if (A > B){\n" + 
                   "return B; \n"+
-                  "}\n";
+                  "}}\n";
 
     var unittests = 'import unittestparson\n' +
                   'class myTests(unittestparson.unittest):\n' +
@@ -49,9 +50,9 @@
                   'unittests': unittests,
                   'grader': ParsonsWidget._graders.LanguageTranslationGrader,
                 'executable_code': "def find_largest(a, b):\n" + 
-                  "if a > b: return b\n" +
-                  "\n",
-                'programmingLang': "java"
+                  "if a > b:\n return b\n" +
+                  "\n"
+                
       });
       parson.init(initial);
       parson.shuffleLines();
