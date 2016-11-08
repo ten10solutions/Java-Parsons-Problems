@@ -11,7 +11,7 @@
     <body>
         <img src="http://www.ten10.com/wp-content/themes/ten10/images/ten10-logo.png" alt="Ten10">
         <h2>Exercise 5</h2>
-        <p>Re-order the code, so it makes a working Method</p>
+        <p>Concatanete the Strings to print the correct output</p>
         <div style="width:95%;" id="sortable" class="sortable-code">
         </div>
         <div style="clear:both;"></div>
@@ -30,7 +30,7 @@
         <script src="../lib/skulpt-stdlib.js"></script>
         <script src="../lib/prettify.js"></script>
         <script>
-        var initial = 'String name = \"FirstName \";\nString surname = \"SecondName\";\nSystem.out.print(name + surname);';
+        var initial = 'String name = \"FirstName \";\nString surname = \"SecondName\";\nSystem.out.print(name $$toggle::=::\"+\"::-::+$$ surname);';
         var parson;
 
         $(document).ready(function(){
@@ -42,8 +42,7 @@
                     ],
                 'grader': ParsonsWidget._graders.LanguageTranslationGrader,
                 'executable_code': "output += 'FirstName '\n" +
-                      "output += 'SecondName'\n" +
-                      "\n",
+                      "\noutput $$toggle::=::\"+\"::-::+$$= 'SecondName'\n",
                 'programmingLang': "java"
             });
             parson.init(initial);
