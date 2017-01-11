@@ -7,9 +7,8 @@
   <meta charset="utf8"/>
 </head>
 <body>
-<h2>Exercise 6</h2>
-<p>Construct a program by changing the values of <code>x</code> and <code>y</code> and sets the value of z to 6. You can change the names of the variables (<span class="jsparson-toggle"></span>)
-  by clicking them.</p>
+<h2>Exercise 10</h2>
+<p>Construct a program which returns the values of b and c as True.  It will be easier if you focus on getting B working and then work on c.  a = 6 and d = 40</p>
 <div id="sortableTrash" class="sortable-code"><p>Trash</p></div>
 <div id="sortable" class="sortable-code"><p>Solution</p></div>
 <div style="clear:both;"></div>
@@ -27,17 +26,33 @@
 <script src="../lib/skulpt.js"></script>
 <script src="../lib/skulpt-stdlib.js"></script>
 <script>
-  var initial = "$$toggle::x::y::z$$ = " +
-                "$$toggle::1::2::3$$\n" +
-                "$$toggle::x::y::z$$ = " +
-                "$$toggle::1::2::3$$\n" +
-                "z = " +
-                "x * y\n";
+  var initial = "$$toggle::j::e::f::g::h::i$$ = " +
+                "$$toggle::1::2::3::4::5::6::7::8::9$$\n" +
+                "$$toggle::j::e::f::g::h::i$$ = " +
+                "$$toggle::1::2::3::4::5::6::7::8::9$$\n" +
+                "$$toggle::j::e::f::g::h::i$$ = " +
+                "$$toggle::1::2::3::4::5::6::7::8::9$$\n" +
+                "$$toggle::j::e::f::g::h::i$$ = " +
+                "$$toggle::1::2::3::4::5::6::7::8::9$$\n" +
+                "$$toggle::j::e::f::g::h::i$$ = " +
+                "$$toggle::1::2::3::4::5::6::7::8::9$$\n" +
+                "$$toggle::j::e::f::g::h::i$$ = " +
+                "$$toggle::1::2::3::4::5::6::7::8::9$$\n" +
+                "$$toggle::j::e::f::g::h::i$$ = " +
+                "$$toggle::1::2::3::4::5::6::7::8::9$$\n" +
+                "$$toggle::j::e::f::g::h::i$$ = " +
+                "$$toggle::1::2::3::4::5::6::7::8::9$$\n" +
+                "b = (a ==  " +
+                "e * f)\n" +
+                "c= (d =="+
+                "(f + g + h + i)*j)"  
+                ;
   $(document).ready(function(){
     var parson = new ParsonsWidget({
       'sortableId': 'sortable',
       'trashId': 'sortableTrash',
-      'vartests': [{initcode: "x = 0\ny=0\nz=0", code: "", message: "Testing with initial variable values x = 0 and y = 0", variables: {z: 6}}],
+      'vartests': [{initcode: "a = 6\nb='false'\nd=40", code: "", message: "Testing with initial variable values a = 6", variables: {b:true}},
+                  {initcode: "a = 10\nb='false'\nc='false'\nd=40", code: "", message: "Testing with initial variable values d = 40", variables: {c:true}}],
       lang: "en"
     });
     parson.init(initial);

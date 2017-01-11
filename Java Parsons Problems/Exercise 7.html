@@ -7,7 +7,7 @@
   <meta charset="utf8"/>
 </head>
 <body>
-<h2>Variable Swap</h2>
+<h2>Exercise 7</h2>
 <p>Construct a program that swaps the values of variables <code>x</code> and <code>y</code> using the
   helper variable <code>tmp</code>. You can change the names of the variables (<span class="jsparson-toggle"></span>)
   by clicking them.</p>
@@ -52,7 +52,7 @@
       event.preventDefault();
       var fb = parson.getFeedback();
       $("#unittest").html("<h2>Feedback from testing your program:</h2>" + fb.feedback);
-      if (fb.success) { alert("Good, you solved the assignment!"); }
+      if (fb.success) { $(".testcase.pass").append("<a href='Exercise 8.html'>Next Exercise</a>"); }
     });
   });
 </script>

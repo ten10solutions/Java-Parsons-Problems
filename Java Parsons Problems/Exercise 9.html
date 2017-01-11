@@ -10,8 +10,8 @@
   </head>
   <body>
   <img src="http://www.ten10.com/wp-content/themes/ten10/images/ten10-logo.png" alt="Ten10">
-    <h2>Exercise 8</h2>
-    <p>Your task is to construct a method, which always returns the highest of x or y</p>
+    <h2>Exercise 9</h2>
+    <p>Your task is to construct a method, which always returns the Lowest of x or y</p>
     <div id="sortableTrash" class="sortable-code"><p>Trash</p></div>
     <div id="sortable" class="sortable-code"><p>Solution</p></div>
     <div style="clear:both;"></div>
@@ -29,15 +29,15 @@
     <script src="../lib/skulpt.js"></script>
     <script src="../lib/skulpt-stdlib.js"></script>
     <script>
-    var initial = 'public void getLargest(int x, int y){\nif ($$toggle::x::y$$ > $$toggle::x::y$$){\nreturn $$toggle::x::y$$;\n}\nelse{\nreturn $$toggle::x::y$$;\n}\n}';
+    var initial = 'public void getSmallest(int x, int y){\nif ($$toggle::x::y$$ < $$toggle::x::y$$){\nreturn $$toggle::x::y$$;\n}\nelse{\nreturn $$toggle::x::y$$;\n}\n}';
 
     var unittests = 'import unittestparson\n' +
                   'class myTests(unittestparson.unittest):\n' +
                   '  def testOne(self):\n' +
-                  '    self.assertEqual(find_largest(3, 2),3,' +
-                          '"Calling function <code>find_largest(3,2)</code>.")\n' +
-                  '    self.assertEqual(find_largest(2, 3),3,' +
-                          '"Calling function <code>find_largest(2,3)</code>.")\n' +
+                  '    self.assertEqual(getSmallest(3, 2),2,' +
+                          '"Calling function <code>getSmallest(3,2)</code>.")\n' +
+                  '    self.assertEqual(getSmallest(2, 3),2,' +
+                          '"Calling function <code>getSmallest(2,3)</code>.")\n' +
                   '_test_result = myTests().main()';
 
 
@@ -47,8 +47,8 @@
                   'trashId': 'sortableTrash',
                   'unittests': unittests,
                   'grader': ParsonsWidget._graders.LanguageTranslationGrader,
-                'executable_code': "def find_largest(x, y):\n" + 
-                                    "if $$toggle::x::y$$ > $$toggle::x::y$$:\n" +
+                'executable_code': "def getSmallest(x, y):\n" + 
+                                    "if $$toggle::x::y$$ < $$toggle::x::y$$:\n" +
                                     "return $$toggle::x::y$$\n" +
                                     "\n" +
                                     "else:\n" +
@@ -70,7 +70,7 @@
         var fb = parson.getFeedback();
         $("#jsparson").html("<h2>Feedback from testing your program:</h2>" +
                             fb.feedback);
-        if (fb.success) { $(".testcase.pass").append("<a href='Exercise 9.html'>Next Exercise</a>"); }
+        if (fb.success) { $(".testcase.pass").append("<a href='Exercise 10.html'>Next Exercise</a>"); }
       });
    });
     </script>
