@@ -10,8 +10,8 @@
   </head>
   <body>
   <img src="http://www.ten10.com/wp-content/themes/ten10/images/ten10-logo.png" alt="Ten10">
-    <h2>Exercise 8</h2>
-    <p>Your task is to construct a method, which always returns the highest of x or y</p>
+    <h2>Exercise 12</h2>
+    <p>Your task is to construct a method, which returns true if x is larger than y, and false if y is larger than x</p>
     <div id="sortableTrash" class="sortable-code"><p>Trash</p></div>
     <div id="sortable" class="sortable-code"><p>Solution</p></div>
     <div style="clear:both;"></div>
@@ -29,14 +29,14 @@
     <script src="../lib/skulpt.js"></script>
     <script src="../lib/skulpt-stdlib.js"></script>
     <script>
-    var initial = 'public void getLargest(int x, int y){\nif ($$toggle::x::y$$ > $$toggle::x::y$$){\nreturn $$toggle::x::y$$;\n}\nelse{\nreturn $$toggle::x::y$$;\n}\n}';
+    var initial = 'public void isLarger(int x, int y){\nif ($$toggle::x::y$$ > $$toggle::x::y$$){\nreturn True;\n}\nelse{\nreturn False;\n}\n}';
 
     var unittests = 'import unittestparson\n' +
                   'class myTests(unittestparson.unittest):\n' +
                   '  def testOne(self):\n' +
-                  '    self.assertEqual(find_largest(3, 2),3,' +
+                  '    self.assertEqual(find_largest(3, 2),True,' +
                           '"Calling function <code>find_largest(3,2)</code>.")\n' +
-                  '    self.assertEqual(find_largest(2, 3),3,' +
+                  '    self.assertEqual(find_largest(2, 3),False,' +
                           '"Calling function <code>find_largest(2,3)</code>.")\n' +
                   '_test_result = myTests().main()';
 
@@ -47,12 +47,12 @@
                   'trashId': 'sortableTrash',
                   'unittests': unittests,
                   'grader': ParsonsWidget._graders.LanguageTranslationGrader,
-                'executable_code': "def find_largest(x, y):\n" + 
+                'executable_code': "def is_larger(x, y):\n" + 
                                     "if $$toggle::x::y$$ > $$toggle::x::y$$:\n" +
-                                    "return $$toggle::x::y$$\n" +
+                                    "return True\n" +
                                     "\n" +
                                     "else:\n" +
-                                    "return $$toggle::x::y$$\n" +
+                                    "return False\n" +
                                     "\n" +
                                     "\n",
                                     'programmingLang': "java"

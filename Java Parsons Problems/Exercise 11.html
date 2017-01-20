@@ -10,8 +10,8 @@
   </head>
   <body>
   <img src="http://www.ten10.com/wp-content/themes/ten10/images/ten10-logo.png" alt="Ten10">
-    <h2>Exercise 8</h2>
-    <p>Your task is to construct a method, which always returns the highest of x or y</p>
+    <h2>Exercise 11</h2>
+    <p>Your task is to construct a method, which will return True if the number passed into it is a prime number and false if it is not a prime number</p>
     <div id="sortableTrash" class="sortable-code"><p>Trash</p></div>
     <div id="sortable" class="sortable-code"><p>Solution</p></div>
     <div style="clear:both;"></div>
@@ -29,14 +29,16 @@
     <script src="../lib/skulpt.js"></script>
     <script src="../lib/skulpt-stdlib.js"></script>
     <script>
-    var initial = "public boolean isPrime(int $$toggle::x::y$$){\n"+
+    var initial = "public boolean isPrime(int x){\n"+
                   "boolean status = $$toggle::True::False$$;\n"+
                   "if (x < $$toggle::1::2::3::4::5$$){\n"+
                   "status = $$toggle::True::False$$;\n"+
-                  "}else {\n"+
+                  "}\n"+
+                  "else {\n"+
                   "for (int i=2; i<=x; i++){\n"+
-                  "if(x % n == 0){\n"+
+                  "if(x % i == 0){\n"+
                   "status = $$toggle::True::False$$;\n" +
+                  "}\n"+
                   "}\n"+
                   "}\n"+
                   "return status;\n"+
@@ -46,10 +48,10 @@
     var unittests = 'import unittestparson\n' +
                   'class myTests(unittestparson.unittest):\n' +
                   '  def testOne(self):\n' +
-                  '    self.assertEqual(is_prime(1),1,' +
-                          '"Calling function <code>is_prime(1)</code>.")\n' +
                   '    self.assertEqual(is_prime(3),True,' +
                           '"Calling function <code>is_prime(3)</code>.")\n' +
+                  '    self.assertEqual(is_prime(5),True,' +
+                          '"Calling function <code>is_prime(5)</code>.")\n' +
                           '    self.assertEqual(is_prime(10),False,' +
                           '"Calling function <code>is_prime(10)</code>.")\n' +
                   '_test_result = myTests().main()';
@@ -61,15 +63,21 @@
                   'trashId': 'sortableTrash',
                   'unittests': unittests,
                   'grader': ParsonsWidget._graders.LanguageTranslationGrader,
-                'executable_code': "def is_prime($$toggle::x::y$$):\n"+
+                'executable_code': "def is_prime(x):\n"+
                                     "status = $$toggle::True::False$$\n"+
-                                    "if x >= $$toggle::1::2::3::4::5$$:\n"+
+                                    "if x < $$toggle::1::2::3::4::5$$:\n"+
+                                    "status = $$toggle::True::False$$\n"+
+                                    "\n"+
+                                    "else:\n"+
                                     "for i in range(2,x):\n"+
                                     "if x % i == 0:\n"+
                                       "status = $$toggle::True::False$$\n"+
-                                    "else:\n"+
-                                    
-                                    "return x",
+                                      "\n"+
+                                      "\n"+
+                                      "\n"+
+                                      "\n"+
+                                    "return status\n"+
+                                    "\n",
                                     'programmingLang': "java"
                   
                 
