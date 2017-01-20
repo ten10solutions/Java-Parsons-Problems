@@ -1,78 +1,80 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Example of unittests in js-parsons</title>
-    <link href="../parsons.css" rel="stylesheet" />
-    <link href="../lib/prettify.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <script src="../lib/prettify.js"></script>
-    <meta charset="utf8" />
-  </head>
-  <body>
-  <img src="http://www.ten10.com/wp-content/themes/ten10/images/ten10-logo.png" alt="Ten10">
-    <h2>Exercise 8</h2>
-    <p>Your task is to construct a method, which always returns the highest of x or y</p>
-    <div id="sortableTrash" class="sortable-code"><p>Trash</p></div>
-    <div id="sortable" class="sortable-code"><p>Solution</p></div>
-    <div style="clear:both;"></div>
+    <head>
+        <title>Simple js-parsons example assignment</title>
+        <link href="../parsons.css" rel="stylesheet" />
+        <link href="../lib/prettify.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <script src="../lib/prettify.js"></script>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <img src="http://www.ten10.com/wp-content/themes/ten10/images/ten10-logo.png" alt="Ten10">
+        <h2>Exercise 13</h2>
+        <p>Your task is to produce a method which returns output as True</p>
+        <div style="width:95%;" id="sortable" class="sortable-code">
+        </div>
+        <div style="clear:both;"></div>
         <p>
             <a href="#" id="newInstanceLink">New instance</a>
             <a href="#" id="feedbackLink">Get feedback</a>
         </p>
-    <div id="jsparson"></div>
-    <script src="../lib/jquery.min.js"></script>
-    <script src="../lib/jquery-ui.min.js"></script>
-    <script src="../lib/jquery.ui.touch-punch.min.js"></script>
-    <script src="../lib/underscore-min.js"></script>
-    <script src="../lib/lis.js"></script>
-    <script src="../parsons.js"></script>
-    <script src="../lib/skulpt.js"></script>
-    <script src="../lib/skulpt-stdlib.js"></script>
-    <script>
-    var initial = 'public void getLargest(int x, int y){\nif ($$toggle::x::y$$ > $$toggle::x::y$$){\nreturn $$toggle::x::y$$;\n}\nelse{\nreturn $$toggle::x::y$$;\n}\n}';
+        <div id="unittest"></div>
+        <script src="../lib/jquery.min.js"></script>
+        <script src="../lib/jquery-ui.min.js"></script>
+        <script src="../lib/jquery.ui.touch-punch.min.js"></script>
+        <script src="../lib/underscore-min.js"></script>
+        <script src="../lib/lis.js"></script>
+        <script src="../parsons.js"></script>
+        <script src="../lib/skulpt.js"></script>
+        <script src="../lib/skulpt-stdlib.js"></script>
+        <script src="../lib/prettify.js"></script>
+        <script>
+        var initial = 'output = (($$toggle::1::2::3::4::5$$+$$toggle::1::2::3::4::5$$)\n'+
+                      '$$toggle::=::\"==\"::==::++::+$$\n'+
+                      '($$toggle::1::2::3::4::5$$+$$toggle::1::2::3::4::5$$)\n'+
+                      '$$toggle::=::\"==\"::==::++::+$$\n'+
+                      '($$toggle::1::2::3::4::5$$+$$toggle::1::2::3::4::5$$)\n'+
+                      '$$toggle::=::\"==\"::==::++::+$$\n'+
+                      '($$toggle::1::2::3::4::5$$+$$toggle::1::2::3::4::5$$)\n'+
+                      '$$toggle::=::\"==\"::==::++::+$$\n'+
+                      '($$toggle::1::2::3::4::5::6::7::8::9::10::11::12::13::254$$));';
+        var parson;
 
-    var unittests = 'import unittestparson\n' +
-                  'class myTests(unittestparson.unittest):\n' +
-                  '  def testOne(self):\n' +
-                  '    self.assertEqual(find_largest(3, 2),3,' +
-                          '"Calling function <code>find_largest(3,2)</code>.")\n' +
-                  '    self.assertEqual(find_largest(2, 3),3,' +
-                          '"Calling function <code>find_largest(2,3)</code>.")\n' +
-                  '_test_result = myTests().main()';
-
-
-    $(document).ready(function(){
-      var parson = new ParsonsWidget({
-                  'sortableId': 'sortable',
-                  'trashId': 'sortableTrash',
-                  'unittests': unittests,
-                  'grader': ParsonsWidget._graders.LanguageTranslationGrader,
-                'executable_code': "def find_largest(x, y):\n" + 
-                                    "if $$toggle::x::y$$ > $$toggle::x::y$$:\n" +
-                                    "return $$toggle::x::y$$\n" +
-                                    "\n" +
-                                    "else:\n" +
-                                    "return $$toggle::x::y$$\n" +
-                                    "\n" +
-                                    "\n",
-                                    'programmingLang': "java"
-                  
-                
-      });
-      parson.init(initial);
-      parson.shuffleLines();
-      $("#newInstanceLink").click(function(event){
-        event.preventDefault();
-        parson.shuffleLines();
-      });
-      $("#feedbackLink").click(function(event){
-        event.preventDefault();
-        var fb = parson.getFeedback();
-        $("#jsparson").html("<h2>Feedback from testing your program:</h2>" +
-                            fb.feedback);
-        if (fb.success) { $(".testcase.pass").append("<a href='Exercise 14.html'>Next Exercise</a>"); }
-      });
-   });
-    </script>
+        $(document).ready(function(){
+            parson = new ParsonsWidget({
+                'sortableId': 'sortable',
+                'max_wrong_lines': 1,
+                // Expected value of output
+                'vartests': [{initcode: "output = False", code: "", message: "Testing...", variables: {output: true}},
+                    ],
+                'grader': ParsonsWidget._graders.LanguageTranslationGrader,
+                'executable_code': 'output =(($$toggle::1::2::3::4::5$$+$$toggle::1::2::3::4::5$$)\n'+
+                      '$$toggle::=::\"==\"::==::++::+$$\n'+
+                      '($$toggle::1::2::3::4::5$$+$$toggle::1::2::3::4::5$$)\n'+
+                      '$$toggle::=::\"==\"::==::++::+$$\n'+
+                      '($$toggle::1::2::3::4::5$$+$$toggle::1::2::3::4::5$$)\n'+
+                      '$$toggle::=::\"==\"::==::++::+$$\n'+
+                      '($$toggle::1::2::3::4::5$$+$$toggle::1::2::3::4::5$$)\n'+
+                      '$$toggle::=::\"==\"::==::++::+$$\n'+
+                      '($$toggle::1::2::3::4::5::6::7::8::9::10::11::12::13::254$$))',
+                'programmingLang': "java"
+            });
+            parson.init(initial);
+            parson.shuffleLines();
+            $("#newInstanceLink").click(function(event){
+                event.preventDefault();
+                parson.shuffleLines();
+            });
+            $("#feedbackLink").click(function(event){
+                event.preventDefault();
+                var fb = parson.getFeedback();
+                $("#unittest").html("<h2>Feedback from testing your program:</h2>" + fb.feedback);
+                if (fb.success) { 
+                    $(".testcase.pass").append("<a href='Exercise 6.html'>Next Exercise</a>");
+                }
+            });
+        });
+        </script>
     </body>
 </html>
